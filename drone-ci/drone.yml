@@ -38,10 +38,10 @@ steps:
     PASSWORD:
       from_secret: PASSWORD  
   commands:    
-  - ssh -p $PORT $USER_NAME@$IP
+  - sh 'ssh -p $PORT $USER_NAME@$IP'
   - sleep 10
-  - $PASSWORD
-  - kubectl create namespace sai
+  - sh '$PASSWORD'
+  - sh 'kubectl create namespace sai'
 
 services:
 - name: docker
