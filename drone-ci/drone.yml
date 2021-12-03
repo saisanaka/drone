@@ -12,8 +12,9 @@ steps:
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u saisanaka -p Sainaidu#1
-  - docker build ./golang -t saisanaka/drone-sample:2
-  - docker push saisanaka/drone-sample:2
+  - docker build ./golang -t saisanaka/drone-sample:3
+  - docker push saisanaka/drone-sample:3
+  - docker pull saisanaka/drone-sample:3
 
 services:
 - name: docker
