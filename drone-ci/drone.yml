@@ -10,10 +10,8 @@ steps:
   - name: dockersock
     path: /var/run
   environment:
-    DOCKER_USER:
-      from_secret: DOCKER_USER
-    DOCKER_PASSWORD:
-      from_secret: DOCKER_PASSWORD
+    DOCKER_USER: saisanaka
+    DOCKER_PASSWORD: Sainaidu#1
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
