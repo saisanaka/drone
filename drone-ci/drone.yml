@@ -9,9 +9,14 @@ steps:
   volumes:
   - name: dockersock
     path: /var/run
+  environment:
+    DOCKER_USER:
+      from_secret: DOCKER_USER
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
   commands:
   - sleep 5 ## give docker enough time to start
-  - docker login -u saisanaka -p Sainaidu#1
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker build ./golang -t saisanaka/drone-sample:3
   - docker push saisanaka/drone-sample:3
   - docker pull saisanaka/drone-sample:3
