@@ -30,7 +30,7 @@ steps:
 steps:
 - name: pulling-the-docker-image
   pull: always
-  image: saisanaka/drone-sample:3
+  image: linux
   environment:
     DOCKER_USER:
       from_secret: DOCKER_USER
