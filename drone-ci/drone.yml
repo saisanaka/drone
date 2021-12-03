@@ -19,7 +19,29 @@ steps:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker build ./golang -t saisanaka/drone-sample:3
   - docker push saisanaka/drone-sample:3
-  - sh "echo 'Hello world'"
+  
+steps:
+- name: pull
+  pull: always
+  image: saisanaka/drone-sample:3
+  environment:
+    DOCKER_USER:
+      from_secret: DOCKER_USER
+    DOCKER_PASSWORD:
+      from_secret: DOCKER_PASSWORD
+    PORT:
+      from_secret: PORT
+    USER_NAME:
+      from_secret: USER_NAME
+    IP:
+      from_secret: IP
+    PASSWORD:
+      from_secret: PASSWORD  
+  commands:    
+  - ssh -p $PORT $USER_NAME@$IP
+  - sleep 10
+  - $PASSWORD
+  - kubectl create namespace sai
 
 services:
 - name: docker
