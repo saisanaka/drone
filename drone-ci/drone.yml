@@ -19,7 +19,7 @@ steps:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker build ./golang -t saisanaka/drone-sample:3
   - docker push saisanaka/drone-sample:3
-  - docker pull saisanaka/drone-sample:3
+  - sh "echo 'Hello world'"
 
 services:
 - name: docker
