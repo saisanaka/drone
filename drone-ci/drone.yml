@@ -21,7 +21,14 @@ steps:
   - docker push saisanaka/drone-sample:3
   
 steps:
-- name: pull
+- name: pulling-linux
+  image: linux
+  commands:
+  - echo "Hello world"
+  
+  
+steps:
+- name: pulling-the-docker-image
   pull: always
   image: saisanaka/drone-sample:3
   environment:
