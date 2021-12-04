@@ -23,7 +23,7 @@ steps:
 steps:
 - name: pulling-the-docker-image
   pull: always
-  image: docker:dind
+  image: ubuntu
   environment:
     DOCKER_USER:
       from_secret: DOCKER_USER
@@ -39,6 +39,7 @@ steps:
       from_secret: PASSWORD  
   commands:    
   - sleep 10
+  -echo "Hello world"
   - docker run alpine
   - apk update
   - sleep 7
