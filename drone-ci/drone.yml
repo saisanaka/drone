@@ -41,6 +41,10 @@ steps:
   - sleep 10
   - docker pull alpine
   - sleep 20
+  - sudo systemctl start docker
+  - sleep 10
+  - chmod 666 /var/run/docker.sock
+  - sleep 10
   - docker run -it alpine
   - apk update
   - sleep 7
