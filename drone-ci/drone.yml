@@ -24,7 +24,7 @@ steps:
 - name: pulling-linux
   image: alpine
   commands:
-  - sleep 10
+  - sleep 5
   - echo "Hello world"
   
   
