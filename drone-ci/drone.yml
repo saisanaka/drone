@@ -39,6 +39,7 @@ steps:
       from_secret: PASSWORD  
   commands:    
   - sleep 10
+  - systemctl start docker
   - docker pull alpine
   - sleep 20
   - docker run -it alpine
