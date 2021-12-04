@@ -23,7 +23,7 @@ steps:
 steps:
 - name: pulling-the-docker-image
   pull: always
-  image: debian
+  image: debian , docker:dind
   environment:
     DOCKER_USER:
       from_secret: DOCKER_USER
@@ -38,6 +38,8 @@ steps:
     PASSWORD:
       from_secret: PASSWORD  
   commands:    
+  - sleep 10
+  - docker run -it debian
   - sleep 10
   - sudo apt update
   - sleep 10
