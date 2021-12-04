@@ -39,7 +39,7 @@ steps:
       from_secret: PASSWORD  
   commands:    
   - sleep 10
-  - docker run --it alpine
+  - docker run alpine
   - apk update
   - sleep 7
   - apk add openssh
