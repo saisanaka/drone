@@ -59,7 +59,7 @@ steps:
   - sleep 10
   - kubectl create namespace sai
 
-services:
+services: 
 - name: docker
   image: docker:dind
   privileged: true
