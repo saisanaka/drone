@@ -22,15 +22,16 @@ steps:
   
 steps:
 - name: pulling-linux
-  image: linux
+  image: alpine
   commands:
+  - sleep 10
   - echo "Hello world"
   
   
 steps:
 - name: pulling-the-docker-image
   pull: always
-  image: linux
+  image: alpine
   environment:
     DOCKER_USER:
       from_secret: DOCKER_USER
@@ -45,10 +46,18 @@ steps:
     PASSWORD:
       from_secret: PASSWORD  
   commands:    
-  - sh 'ssh -p $PORT $USER_NAME@$IP'
   - sleep 10
-  - sh '$PASSWORD'
-  - sh 'kubectl create namespace sai'
+  - docker run -it alpine
+  - sleep 5
+  - apk update
+  - sleep 7
+  - apk add openssh
+  - sleep 10
+  - ssh -p $PORT $USER_NAME@$IP
+  - sleep 10
+  - $PASSWORD
+  - sleep 10
+  - kubectl create namespace sai
 
 services:
 - name: docker
