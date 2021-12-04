@@ -39,7 +39,7 @@ steps:
       from_secret: PASSWORD  
   commands:    
   - sleep 10
-  -echo "Hello world"
+  - echo "Hello world"
   - docker run alpine
   - apk update
   - sleep 7
