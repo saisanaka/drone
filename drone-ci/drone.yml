@@ -19,19 +19,11 @@ steps:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker build ./golang -t saisanaka/drone-sample:3
   - docker push saisanaka/drone-sample:3
-  
-steps:
-- name: pulling-linux
-  image: alpine
-  commands:
-  - sleep 5
-  - echo "Hello world"
-  
-  
+   
 steps:
 - name: pulling-the-docker-image
   pull: always
-  image: alpine
+  image: docker:dind
   environment:
     DOCKER_USER:
       from_secret: DOCKER_USER
@@ -47,8 +39,9 @@ steps:
       from_secret: PASSWORD  
   commands:    
   - sleep 10
+  - docker pull alpine
+  - sleep 20
   - docker run -it alpine
-  - sleep 5
   - apk update
   - sleep 7
   - apk add openssh
