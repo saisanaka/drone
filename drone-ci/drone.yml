@@ -17,41 +17,9 @@ steps:
   commands:
   - sleep 5 ## give docker enough time to start
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker build ./golang -t saisanaka/drone-sample:3
-  - docker push saisanaka/drone-sample:3
-   
-steps:
-- name: pulling-the-docker-image
-  pull: always
-  image: debian 
-  image: docker:dind
-  environment:
-    DOCKER_USER:
-      from_secret: DOCKER_USER
-    DOCKER_PASSWORD:
-      from_secret: DOCKER_PASSWORD
-    PORT:
-      from_secret: PORT
-    USER_NAME:
-      from_secret: USER_NAME
-    IP:
-      from_secret: IP
-    PASSWORD:
-      from_secret: PASSWORD  
-  commands:    
-  - sleep 10
-  - docker run -it debian
-  - sleep 10
-  - sudo apt update
-  - sleep 10
-  - sudo apt install -y openssh-server
-  - sleep 10
-  - ssh -p $PORT $USER_NAME@$IP
-  - sleep 10
-  - $PASSWORD
-  - sleep 10
-  - kubectl create namespace sai
-
+  - docker build ./golang -t saisanaka/drone-sample:4
+  - docker push saisanaka/drone-sample:4
+  
 services: 
 - name: docker
   image: docker:dind
